@@ -1,5 +1,6 @@
 package zykj.com.barguotakeout.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -32,43 +32,40 @@ import java.util.List;
 
 import zykj.com.barguotakeout.Mapplication;
 import zykj.com.barguotakeout.R;
+import zykj.com.barguotakeout.activity.RankDetailActivity;
+import zykj.com.barguotakeout.activity.RecommendActivity;
 import zykj.com.barguotakeout.adapter.CategoryAdapter;
 import zykj.com.barguotakeout.adapter.RanksAdapter;
-import zykj.com.barguotakeout.adapter.RestaurantAdapter;
 import zykj.com.barguotakeout.http.EntityHandler;
 import zykj.com.barguotakeout.http.HttpUtil;
 import zykj.com.barguotakeout.http.SimpleHttpHandler;
 import zykj.com.barguotakeout.model.BaGuoRank;
-import zykj.com.barguotakeout.model.ResturantModel;
 
 /**
  * Created by ss on 15-4-22.
  */
-public class RankList extends CommonFragment implements View.OnClickListener{
+public class RankList extends CommonFragment implements View.OnClickListener,AdapterView.OnItemClickListener{
     private static Integer category=1;//
     private static Integer order=0;//排序方式 默认为0 全部
 
     private RelativeLayout btn_paixu;
     private RelativeLayout btn_fenlei;
-    private Animation myAnimation;
 
     private int page=1;
     private int num=7;
-    private String oneid,twoid,threeid;
+    private String oneid="1",twoid="2",threeid="9";
     private PullToRefreshListView ranklist;
-    private RestaurantAdapter adapter;
     private RanksAdapter ranksAdapter;
     private Button btn_recommend;//我要推荐
     private RadioGroup.LayoutParams mRadioParams;
-    private List<ResturantModel> list;
+    private List<BaGuoRank> bglist;
 
     private PopupWindow popupWindow;
     private ListView publicList;
     private RadioGroup oneCategory,twoCategory,threeCategory;
-    private ScrollView left_show;
     private String[] paixulist;
     private String[] resid;
-    private ArrayList<HashMap<String, String>> listItem;
+    private Boolean show = false;
 
     private int sWrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
     private int sFileParent = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -88,7 +85,6 @@ public class RankList extends CommonFragment implements View.OnClickListener{
     private void initPop() {
         paixulist = new String[]{"默认排序","点赞最多","评分最高","认证最高","距离最近"};
         resid = new String[]{R.mipmap.paixu+"",R.mipmap.dianzan+"",R.mipmap.pingfen+"",R.mipmap.renzheng+"",R.mipmap.juli+""};
-        initData();
         View view=LayoutInflater.from(getActivity()).inflate(R.layout.popu_layout,null);
         publicList = (ListView) view.findViewById(R.id.lv_content);
         if(popupWindow == null){
@@ -111,10 +107,10 @@ public class RankList extends CommonFragment implements View.OnClickListener{
                 oneCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                        twoid = String.valueOf(checkedId);
+                        oneid = String.valueOf(checkedId);
                         threeCategory.removeAllViews();
                         twoCategory.removeAllViews();
-                        getTwoCateByOne(String.valueOf(checkedId));
+                        getTwoCateByOne(oneid);
                     }
                 });
             }
@@ -135,7 +131,7 @@ public class RankList extends CommonFragment implements View.OnClickListener{
                     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                         twoid = String.valueOf(checkedId);
                         threeCategory.removeAllViews();
-                        getThreeCateByTwo(String.valueOf(checkedId));
+                        getThreeCateByTwo(twoid);
                     }
                 });
             }
@@ -157,7 +153,8 @@ public class RankList extends CommonFragment implements View.OnClickListener{
                         threeid = String.valueOf(checkedId);
                         threeCategory.removeAllViews();
                         twoCategory.removeAllViews();
-                        oneCategory.setVisibility(View.GONE);
+                        oneCategory.removeAllViews();
+                        show=false;
                         requestData(35.348000, 118.201900);
                     }
                 });
@@ -190,7 +187,6 @@ public class RankList extends CommonFragment implements View.OnClickListener{
         twoCategory = (RadioGroup) getView().findViewById(R.id.category_list_two);//二级分类
         threeCategory = (RadioGroup) getView().findViewById(R.id.category_list_three);//三级分类
         ranklist = (PullToRefreshListView) getView().findViewById(R.id.right_category_list);//巴国榜列表
-        left_show = (ScrollView) getView().findViewById(R.id.left_category_one);//显示分类
 
         btn_fenlei.setOnClickListener(this);
         btn_paixu.setOnClickListener(this);
@@ -267,6 +263,7 @@ public class RankList extends CommonFragment implements View.OnClickListener{
             public void onReadSuccess(List<BaGuoRank> list) {
                 ranksAdapter = new RanksAdapter(getActivity(),list);
                 ranklist.setAdapter(ranksAdapter);
+                ranklist.setOnItemClickListener(RankList.this);
             }
         }, params);
     }
@@ -274,24 +271,25 @@ public class RankList extends CommonFragment implements View.OnClickListener{
     private void loadmore(double lat,double lo){
         ++page;
         RequestParams params=new RequestParams();
-        params.put("page",page);
-        params.put("num",num);
-        params.put("lat",lat);//纬度
-        params.put("long",lo);
-        params.put("order",String.valueOf(order));
-        //params.put("actid",String.valueOf(huodong));
-        params.put("category",String.valueOf(category));
-        HttpUtil.getRestaurantList(new EntityHandler<ResturantModel>(ResturantModel.class) {
+        params.put("page",page);//1-->>
+        params.put("num",num);//7
+        params.put("latitude",String.valueOf(lat));//纬度
+        params.put("longitude",String.valueOf(lo));//精度
+        params.put("oneid",oneid);//1 一级分类
+        params.put("twoid",twoid);//1 二级分类
+        params.put("threeid",threeid);//1 三级分类
+        params.put("userid",Mapplication.getModel().getUserid());//1
+        params.put("sort",String.valueOf(order));//1
+        HttpUtil.getRestaurantList(new EntityHandler<BaGuoRank>(BaGuoRank.class) {
             @Override
-            public void onReadSuccess(List<ResturantModel> llist) {
-                list.addAll(llist);
-                adapter = new RestaurantAdapter(getActivity(),list);
-                ranklist.setAdapter(adapter);
+            public void onReadSuccess(List<BaGuoRank> alist) {
+                bglist.addAll(alist);
+                ranksAdapter = new RanksAdapter(getActivity(),bglist);
+                ranklist.setAdapter(ranksAdapter);
                 if(ranklist.isRefreshing()){
                     ranklist.onRefreshComplete();
                 }
             }
-
             @Override
             public void onRecevieFailed(String status, JSONObject json) {
                 super.onRecevieFailed(status, json);
@@ -303,19 +301,18 @@ public class RankList extends CommonFragment implements View.OnClickListener{
         },params);
     }
 
-
-
-
-
     @Override
     public void onClick(View view) {
         //点击顶部的排序按钮 弹出popu window 点击popuwindow 按钮 重新获取数据
         switch (view.getId()){
             case R.id.btn_fenlei:
-                if(left_show.getVisibility() == View.GONE){
-                    left_show.setVisibility(View.VISIBLE);
+                if(!show){
+                    initData();show=true;
                 }else{
-                    left_show.setVisibility(View.GONE);
+                    threeCategory.removeAllViews();
+                    twoCategory.removeAllViews();
+                    oneCategory.removeAllViews();
+                    show=false;
                 }
                 break;
             case R.id.btn_paixu:
@@ -334,26 +331,16 @@ public class RankList extends CommonFragment implements View.OnClickListener{
                 popupWindow.showAsDropDown(view);
                 break;
             case R.id.btn_recommended:
-//                if(activitiesModels != null){
-//                    pList.setAdapter(new ActivityModelAdapter(getActivity(),activitiesModels));
-//                    pList.setOnItemClickListener(new categoryItemClickListener() {
-//                        @Override
-//                        void setUpType(int position) {
-//
-//                        }
-//                    });
-//                    popupWindow.showAsDropDown(v);
-//                }
-                //活动
+                Intent cIntent = new Intent(getActivity(), RecommendActivity.class);
+                startActivity(cIntent);
                 break;
         }
     }
 
-    public Integer getCategory() {
-        return category;
-    }
-
-    public void setCategory(Integer category) {
-        this.category = category;
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Intent dIntent = new Intent(getActivity(), RankDetailActivity.class);
+        dIntent.putExtra("",bglist.get(position).getArticleid());
+        startActivity(dIntent);
     }
 }

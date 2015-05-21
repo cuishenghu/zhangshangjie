@@ -9,6 +9,13 @@
         <dex dex="E:\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-e326ec957aede4b6a806aa3129caf36c6f7238c2.jar" />
     </item>
     <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\SMSSDK\unspecified\libs\SMSSDK-1.1.9.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="96383506ac3f109eea7f9f11e075347808aa37c3">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\SMSSDK-1.1.9-6dbb415f8c9440f6e07d9c1b14b01f36bae90b37.jar" />
+    </item>
+    <item
         jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\libammsdk.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -23,67 +30,18 @@
         <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\Android_Location_V1.3.2-5f7d55b1085c467dcadb8031f88fe941829702c6.jar" />
     </item>
     <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\info.hoang8f\android-segmented\1.0.5\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="fca96856c842448368d6003a145089f03c8df0e3">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-4cb0528718e8380230511420fd3f40e9f195a26c.jar" />
-    </item>
-    <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\alipaysdk.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="33d3102886e819ec70b32dd243a2b4d181ac7089">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\alipaysdk-e0db6260add91b4c2f3388d2a81ec8ba89775b5b.jar" />
-    </item>
-    <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\universal-image-loader-1.9.3.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-c1732c48ed114b9db9d70a5ca57b1f3173daa8c6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
-        <dex dex="E:\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\picasso-2.3.2-129daf79aac2b89d04477dd06772606059eeedd9.jar" />
-    </item>
-    <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\library\unspecified\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="43b298658490cdb1c5891ad78fa70b15833269c5">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-eee12114c9a00c0005113eb008f536240397989d.jar" />
-    </item>
-    <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\alipayutdid.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4345fa0a5a7768f2f9c86aaab7db9e2906765193">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\alipayutdid-efcfb62b9bf2268ec9c21581a6d0fb60892c621d.jar" />
-    </item>
-    <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\SMSSDK\unspecified\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c92ccf6caf3c3494e3de39001d4ed455c14074ef">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-bc4ae27404f6691ce60ef13e11f24c057980d840.jar" />
-    </item>
-    <item
-        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\SMSSDK\unspecified\libs\SMSSDK-1.1.9.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="96383506ac3f109eea7f9f11e075347808aa37c3">
-        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\SMSSDK-1.1.9-6dbb415f8c9440f6e07d9c1b14b01f36bae90b37.jar" />
-    </item>
-    <item
         jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
         <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-7ffbd57b5c938a6dbfa93e51f9aa1d653d35c2be.jar" />
+    </item>
+    <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\info.hoang8f\android-segmented\1.0.5\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fca96856c842448368d6003a145089f03c8df0e3">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-4cb0528718e8380230511420fd3f40e9f195a26c.jar" />
     </item>
     <item
         jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\SMSSDK\unspecified\libs\lib.jar"
@@ -107,6 +65,13 @@
         <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\alipaysecsdk-09d9cb2f4272e145e6bf9ae7efc5f14449f34b34.jar" />
     </item>
     <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\alipaysdk.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="33d3102886e819ec70b32dd243a2b4d181ac7089">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\alipaysdk-e0db6260add91b4c2f3388d2a81ec8ba89775b5b.jar" />
+    </item>
+    <item
         jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\SMSSDK\unspecified\libs\mframework.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -114,11 +79,25 @@
         <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\mframework-64705841e1be8c2c7fd70e96884790cc2e113329.jar" />
     </item>
     <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-c1732c48ed114b9db9d70a5ca57b1f3173daa8c6.jar" />
+    </item>
+    <item
         jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
         <dex dex="E:\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\library-2.4.0-dd460f45d27a359687729c3c169358b1eda3100b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
+        <dex dex="E:\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\picasso-2.3.2-129daf79aac2b89d04477dd06772606059eeedd9.jar" />
     </item>
     <item
         jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.6\a845a88238be0b5be9d238652c1bc0605ef91f52\android-async-http-1.4.6.jar"
@@ -149,11 +128,32 @@
         <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-8009ec65b9140a74f02345348c0feea49ce8131a.jar" />
     </item>
     <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\library\unspecified\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f23de4f037705d9f29123c10556df2bf8c788136">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-eee12114c9a00c0005113eb008f536240397989d.jar" />
+    </item>
+    <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\alipayutdid.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4345fa0a5a7768f2f9c86aaab7db9e2906765193">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\alipayutdid-efcfb62b9bf2268ec9c21581a6d0fb60892c621d.jar" />
+    </item>
+    <item
         jar="F:\zhangshangjie\BarGuoTakeOut-master\app\libs\fastjson-1.1.42.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="ce58589315333d7c4f76ca3caf2a07ff1cf27332">
         <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\fastjson-1.1.42-2e5cb0731e0a6476f109e80e4b6f0c30dcce45eb.jar" />
+    </item>
+    <item
+        jar="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\exploded-aar\BarGuoTakeOut-master\SMSSDK\unspecified\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9ce7962dbd6716de5ad4e1595e3ce52b2355029b">
+        <dex dex="F:\zhangshangjie\BarGuoTakeOut-master\app\build\intermediates\pre-dexed\debug\classes-bc4ae27404f6691ce60ef13e11f24c057980d840.jar" />
     </item>
 
 </items>

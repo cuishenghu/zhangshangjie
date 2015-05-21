@@ -1,8 +1,8 @@
 package zykj.com.barguotakeout.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -10,24 +10,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.apache.http.Header;
+import org.apache.http.protocol.HTTP;
+
+import java.io.UnsupportedEncodingException;
 
 import zykj.com.barguotakeout.Mapplication;
 import zykj.com.barguotakeout.R;
 import zykj.com.barguotakeout.Utils.ToastUTil;
 import zykj.com.barguotakeout.activity.BaGuoBiActivity;
 import zykj.com.barguotakeout.activity.ChengPinActivity;
+import zykj.com.barguotakeout.activity.CreditActivity;
 import zykj.com.barguotakeout.activity.GongSiJianJieActivity;
-import zykj.com.barguotakeout.activity.GuanwangActivity;
 import zykj.com.barguotakeout.activity.LoginActivity;
 import zykj.com.barguotakeout.activity.MCountActivity;
 import zykj.com.barguotakeout.activity.MyOrderActivity;
@@ -166,8 +171,39 @@ public class MeFragment extends CommonLoadFragment implements View.OnClickListen
                 break;
             case R.id.ll_me_baguobi:
                 //巴国币
-                Intent intent4 = new Intent(getActivity(), BaGuoBiActivity.class);
-                startActivity(intent4);
+                if(TextUtils.isEmpty(Mapplication.getModel().getUserid())){
+                    ToastUTil.showToastText(getActivity(),"提示","请先登录!","确定");
+                    return;
+                }
+                RequestParams params = new RequestParams();
+                //appkey:兑吧的appkey,必填；appsecret：兑吧的appsecret，必填；userid：用户的userid,必填；
+                params.add("appkey",IndexFragment.APPKEY);
+                params.add("appsecret",IndexFragment.APPSECRET);
+                params.add("userid",Mapplication.getModel().getUserid());
+                HttpUtil.getduibaurl(new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        try {
+                            String responseString = new String(responseBody, HTTP.UTF_8);
+                            JSONObject jsonObject = (JSONObject) JSON.parse(responseString);
+                            JSONObject jsonData = jsonObject.getJSONObject("data");
+                            String url = jsonData.getString("url");
+                            Intent intent = new Intent();
+                            intent.setClass(getActivity(), CreditActivity.class);
+                            intent.putExtra("navColor", "#0acbc1");    //配置导航条的背景颜色，请用#ffffff长格式。
+                            intent.putExtra("titleColor", "#ffffff");    //配置导航条标题的颜色，请用#ffffff长格式。
+                            intent.putExtra("url", url);    //配置自动登陆地址，每次需服务端动态生成。
+                            startActivity(intent);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        ToastUTil.showToastText(getActivity(),"提醒","请求失败,请稍后重试!","确定");
+                    }
+                },params);
                 break;
             case R.id.ll_me_shoucang:
                 //收藏

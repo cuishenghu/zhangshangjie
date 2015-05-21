@@ -152,4 +152,8 @@ public class HttpUtil {
     public static void commitbaguostar(AsyncHttpResponseHandler handler,RequestParams params) {
         client.post(UrlContants.getUrl(UrlContants.COMMITBAGUOSTAR),params,handler);
     }
+
+    public static void getcollections(AsyncHttpResponseHandler handler,RequestParams params) {
+        client.post(UrlContants.getUrl(UrlContants.COLLECTIONS),params,handler);
+    }
 }

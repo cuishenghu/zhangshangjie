@@ -4,4 +4,4 @@
   <!-- 默认时的背景图片-->    
   <item android:drawable="@color/smssdk_white" /> 
 </selector>
-<!-- From: file:/F:/新建文件夹/BarGuoTakeOut-master/SMSSDK/res/drawable/smssdk_country_bg_selector.xml --><!-- From: file:/F:/新建文件夹/BarGuoTakeOut-master/SMSSDK/build/intermediates/bundles/debug/res/drawable/smssdk_country_bg_selector.xml -->
+<!-- From: file:/F:/zhangshangjie/BarGuoTakeOut-master/SMSSDK/res/drawable/smssdk_country_bg_selector.xml --><!-- From: file:/F:/zhangshangjie/BarGuoTakeOut-master/SMSSDK/build/intermediates/bundles/debug/res/drawable/smssdk_country_bg_selector.xml -->

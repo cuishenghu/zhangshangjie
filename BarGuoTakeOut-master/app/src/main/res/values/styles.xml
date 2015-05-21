@@ -25,6 +25,11 @@
         <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
     </style>
 
+    <!--指向yellow_ratingbar.xml文件 -->
+    <style name="rating_Bar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/yellow_ratingbar</item>
+    </style>
+
     <style name="AnimBottom" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>

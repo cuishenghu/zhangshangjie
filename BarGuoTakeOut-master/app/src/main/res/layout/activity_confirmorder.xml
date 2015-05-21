@@ -155,7 +155,7 @@
             <RadioButton
                 android:id="@+id/rb_buy_wechat"
                 android:button="@drawable/rbtn_red_selector"
-                android:text="维信支付"
+                android:text="微信支付"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RadioGroup>
