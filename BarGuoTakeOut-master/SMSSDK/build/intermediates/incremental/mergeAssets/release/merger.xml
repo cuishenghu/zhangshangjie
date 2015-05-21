@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="F:\新建文件夹\BarGuoTakeOut-master\SMSSDK\assets"/></dataSet><dataSet config="release"><source path="F:\新建文件夹\BarGuoTakeOut-master\SMSSDK\build-types\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="F:\zhangshangjie\BarGuoTakeOut-master\SMSSDK\assets"/></dataSet><dataSet config="release"><source path="F:\zhangshangjie\BarGuoTakeOut-master\SMSSDK\build-types\release\assets"/></dataSet></merger>

@@ -109,7 +109,7 @@
         </ScrollView>
         <ScrollView
             android:id="@+id/left_category_two"
-            android:layout_toRightOf=""
+            android:layout_toRightOf="@id/left_category_one"
             android:layout_height="fill_parent"
             android:layout_width="100dp"
             android:background="#FFFFFF"
