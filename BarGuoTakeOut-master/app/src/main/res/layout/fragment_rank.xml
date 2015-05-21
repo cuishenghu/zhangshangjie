@@ -94,6 +94,7 @@
             android:layout_height="fill_parent"
             android:layout_width="fill_parent" />
         <ScrollView
+            android:visibility="gone"
             android:id="@+id/left_category_one"
             android:layout_height="fill_parent"
             android:layout_width="100dp"
@@ -110,7 +111,7 @@
         <ScrollView
             android:id="@+id/left_category_two"
             android:layout_toRightOf="@id/left_category_one"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_width="100dp"
             android:background="#FFFFFF"
             android:scrollbars="none">
@@ -124,7 +125,8 @@
         </ScrollView>
         <ScrollView
             android:id="@+id/left_category_three"
-            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/left_category_two"
+            android:layout_height="wrap_content"
             android:layout_width="100dp"
             android:background="#FFFFFF"
             android:scrollbars="none">

@@ -107,64 +107,70 @@ public class RankList extends CommonFragment implements View.OnClickListener{
             @Override
             public void onJsonSuccess(JSONObject json) {
                 final JSONArray jsonArray = json.getJSONArray("data");
-                addCategory(oneCategory,jsonArray);
+                addCategory(oneCategory,jsonArray,"oneid");
                 oneCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int position) {
-                        twoid = ((JSONObject)jsonArray.get(position)).getString("oneid");
-                        getTwoCateByOne((JSONObject) jsonArray.get(position));
+                    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                        twoid = String.valueOf(checkedId);
+                        threeCategory.removeAllViews();
+                        twoCategory.removeAllViews();
+                        getTwoCateByOne(String.valueOf(checkedId));
                     }
                 });
             }
         }, params);
     }
 
-    private void getTwoCateByOne(JSONObject jsonObject){
+    private void getTwoCateByOne(String upid){
         RequestParams params2=new RequestParams();
         params2.add("type", "1");//二级目录
-        params2.add("upid",jsonObject.getString("oneid"));
+        params2.add("upid",upid);
         HttpUtil.getbaguoRankCate(new SimpleHttpHandler() {
             @Override
             public void onJsonSuccess(JSONObject json) {
                 final JSONArray jsonArray = json.getJSONArray("data");
-                addCategory(twoCategory,jsonArray);
+                addCategory(twoCategory,jsonArray,"twoid");
                 twoCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int position) {
-                        twoid = ((JSONObject)jsonArray.get(position)).getString("twoid");
-                        getThreeCateByTwo((JSONObject) jsonArray.get(position));
+                    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                        twoid = String.valueOf(checkedId);
+                        threeCategory.removeAllViews();
+                        getThreeCateByTwo(String.valueOf(checkedId));
                     }
                 });
             }
         }, params2);
     }
 
-    private void getThreeCateByTwo(JSONObject jsonObject){
+    private void getThreeCateByTwo(String upid){
         RequestParams params3=new RequestParams();
         params3.add("type", "2");//二级目录
-        params3.add("upid",jsonObject.getString("twoid"));
+        params3.add("upid",upid);
         HttpUtil.getbaguoRankCate(new SimpleHttpHandler() {
             @Override
             public void onJsonSuccess(JSONObject json) {
                 final JSONArray jsonArray = json.getJSONArray("data");
-                addCategory(threeCategory,jsonArray);
+                addCategory(threeCategory,jsonArray,"threeid");
                 threeCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int position) {
-                        threeid = ((JSONObject)jsonArray.get(position)).getString("threeid");
-                        twoCategory.removeAllViews();
+                    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                        threeid = String.valueOf(checkedId);
                         threeCategory.removeAllViews();
+                        twoCategory.removeAllViews();
+                        oneCategory.setVisibility(View.GONE);
+                        requestData(35.348000, 118.201900);
                     }
                 });
             }
         }, params3);
     }
 
-    private void addCategory(RadioGroup category,JSONArray jsonArray){
+    private void addCategory(RadioGroup category,JSONArray jsonArray,String id){
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = (JSONObject) jsonArray.get(i);
             RadioButton mRadio = new RadioButton(getActivity());
             mRadio.setText(jsonObject.getString("name"));
+            mRadio.setId(Integer.valueOf(jsonObject.getString(id)));
             mRadio.setTextSize(16);
             mRadio.setPadding(22, 22, 22, 22);
             mRadio.setGravity(Gravity.CENTER);
@@ -249,11 +255,11 @@ public class RankList extends CommonFragment implements View.OnClickListener{
         RequestParams params=new RequestParams();
         params.put("page",page);//1-->>
         params.put("num",num);//7
-        params.put("latitude","35.056418");//纬度
-        params.put("longitude","118.437424");//精度
-        params.put("oneid","1");//1 一级分类
-        params.put("twoid","2");//1 二级分类
-        params.put("threeid","9");//1 三级分类
+        params.put("latitude",String.valueOf(lat));//纬度
+        params.put("longitude",String.valueOf(lo));//精度
+        params.put("oneid",oneid);//1 一级分类
+        params.put("twoid",twoid);//1 二级分类
+        params.put("threeid",threeid);//1 三级分类
         params.put("userid",Mapplication.getModel().getUserid());//1
         params.put("sort",String.valueOf(order));//1
         HttpUtil.getbaguoRank(new EntityHandler<BaGuoRank>(BaGuoRank.class) {
