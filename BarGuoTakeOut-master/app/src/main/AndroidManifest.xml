@@ -183,7 +183,7 @@
             android:label="@string/title_activity_cheng_pin" >
         </activity>
         <activity
-            android:name=".activity.BaGuoBiActivity"
+            android:name=".activity.ShopPhotoActivity"
             android:label="@string/title_activity_ba_guo_bi" >
         </activity>
         <activity

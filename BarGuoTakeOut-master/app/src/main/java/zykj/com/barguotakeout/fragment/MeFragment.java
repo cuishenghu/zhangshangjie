@@ -1,7 +1,6 @@
 package zykj.com.barguotakeout.fragment;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,7 +27,6 @@ import java.io.UnsupportedEncodingException;
 import zykj.com.barguotakeout.Mapplication;
 import zykj.com.barguotakeout.R;
 import zykj.com.barguotakeout.Utils.ToastUTil;
-import zykj.com.barguotakeout.activity.BaGuoBiActivity;
 import zykj.com.barguotakeout.activity.ChengPinActivity;
 import zykj.com.barguotakeout.activity.CreditActivity;
 import zykj.com.barguotakeout.activity.GongSiJianJieActivity;

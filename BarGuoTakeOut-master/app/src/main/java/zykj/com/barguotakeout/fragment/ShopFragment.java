@@ -1,5 +1,6 @@
 package zykj.com.barguotakeout.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import org.apache.http.Header;
 import zykj.com.barguotakeout.R;
 import zykj.com.barguotakeout.Utils.AppLog;
 import zykj.com.barguotakeout.Utils.ToastUTil;
+import zykj.com.barguotakeout.activity.ShopPhotoActivity;
 import zykj.com.barguotakeout.http.HttpUtil;
 import zykj.com.barguotakeout.model.ResturantModel;
 
@@ -137,6 +139,9 @@ public class ShopFragment extends CommonFragment implements View.OnClickListener
                 break;
             case R.id.rl_photo:
                 //查看相册
+                Intent pIntent = new Intent(getActivity(), ShopPhotoActivity.class);
+                pIntent.putExtra("resid",resid);
+                startActivity(pIntent);
                 break;
         }
     }

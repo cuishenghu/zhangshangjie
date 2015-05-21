@@ -156,4 +156,8 @@ public class HttpUtil {
     public static void getcollections(AsyncHttpResponseHandler handler,RequestParams params) {
         client.post(UrlContants.getUrl(UrlContants.COLLECTIONS),params,handler);
     }
+
+    public static void getShopPhoto(AsyncHttpResponseHandler handler,RequestParams params) {
+        client.post(UrlContants.getUrl(UrlContants.SHOPPHOTO),params,handler);
+    }
 }
